@@ -51,13 +51,36 @@
   *What you turn in*: You should submit the following after crawling at least 2000 HTML pages in the Caltech domain starting from www.caltech.edu.
   1. Your code, including libraries used and how to run it.
   #ans[
-    #link("https://github.com/mcrco/cs144")
+    #link("https://github.com/mcrco/cs144/tree/main/hw1", [https://mcrco/cs144/tree/main/hw1])
+
+    Instructions to run in readme.
+
+    Below graphs and metrics are generated using `p1.ipynb`.
   ]
   2. An explanation of the selection policy you chose and its strengths and weaknesses.
+  #ans[
+    I chose BFS (with concurrency, so not really BFS since depth is not guaranteed to be monotonically non-decreasing). I feel like BFS makes more sense because pages closer to the root page (caltech.edu) are probably more relevant. It makes more sense to crawl the more relevant pages (like a Caltech major description page) rather than recurse all the way own to some super niche lab page.
+  ]
   3. Two histograms. One for the number of hyperlinks per page. One for the number of hyperlinks which point to each page.
+  #ans[
+    #image("img/1-outbound-hist.png")
+    #image("img/1-inbound-hist.png")
+  ]
   4. Two complementary cumulative distribution functions (ccdf). One for the number of hyperlinks per page. One for the number of hyperlinks which point to each page.
+  #ans[
+    #image("img/1-outbound-ccdf.png")
+    #image("img/1-inbound-ccdf.png")
+  ]
   5. The average clustering coefficient and the overall clustering coefficient of the graph. Treat the edges as undirected for these calculations.
+  #ans[
+    Average clustering coefficient: 0.7750951022701442 ,
+    Overall clustering coefficient: 0.4247585079850745
+  ]
   6. The average and maximal diameter of the graph. Treat the edges as undirected for these calculations.
+  #ans[
+    Average diameter: 2.6395950762567555,  
+    Maximal diameter: 6
+  ]
 
 == Six degrees of separation
 
