@@ -157,7 +157,6 @@ Each of the $N$ bidders (including you) choose a bid value following the continu
   ]
 ]
 
-
 + #pt[ 
   What is the expected number of times that the worker would need to update the highest bid as they go through the $N$ envelopes? 
   #ans[
@@ -183,9 +182,9 @@ Each of the $N$ bidders (including you) choose a bid value following the continu
   #ans[
     The expected money I pay is
     $
-      integral_(0)^(v) p("win"|x) dot x dif x &= integral_(0)^(v) (x/v)^(N-1) x dif x \
-      &= 1/(v^(N-1)(N+1)) [x^(N+1)]_(0)^(v) \
-      &= (v^2)/(N+1).
+      integral_(0)^(v) p(x) dot p("win"|x) dot x dif x &= integral_(0)^(v) 1/v (x/v)^(N-1) x dif x \
+      &= 1/(v^(N)(N+1)) [x^(N+1)]_(0)^(v) \
+      &= v/(N+1).
     $ 
 
     Since I'm expected to pay the above amount, I would be satisfied as long as my dream car was worth more than that.
@@ -272,8 +271,8 @@ $ "Cl"(G) := frac(3 times "number of triangles in the graph", "number of connect
     )
   Consider a graph consisting of $n$ triangles that all share a single point. Notice that for a vast majority of the points (the points at the base of each triangle), $"Cl"_(i) (G) = 1$ since there is only one triple centered at each of those points. For the central shared point, $"Cl"_(i) (G) < 1$, but that doesn't matter since the average clustering coefficient is averaged over $2n + 1$ points, so even if the central point's clustering coefficient was 0, as $n -> infinity$, 
   $ "Cl"^("avg") (G) = (2n)/(2n + 1) -> 1. $
-  Now, the total number of triples is much higher since the number of triples is quadratic w.r.t the number of triangles: each of the non-central points form a triple with each of the other non-central points for a total of $2n dot (2n - 1) dot 1/2 = n dot (2n - 1)$ triples. However, the total number of triangles is linear, so the global clustering coefficient is
+  Now, the total number of triples is much higher since the number of triples is quadratic w.r.t the number of triangles: each of the non-central points form a triple with each of the other non-central points for $2n dot (2n - 1) dot 1/2 = n dot (2n - 1)$ triples centered at the central point, and there are also 1 triple centered at each non-central point, for a total of $n(2n + 1)$ triples. However, the total number of triangles is linear just $n$, so the global clustering coefficient is
   $
-    "Cl"(G) = lim_(n -> infinity) (3n)/(n(2n - 1)) -> 0.
+    "Cl"(G) = lim_(n -> infinity) (3n)/(n(2n + 1)) -> 0.
   $ 
 ]
