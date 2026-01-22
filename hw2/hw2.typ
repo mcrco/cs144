@@ -242,9 +242,29 @@
     #ans[
       Notice that the maximal diameter being more than 2 is the same as there being two nodes that aren't in a triangle. For a pair of nodes to node be in a triangle, we need that there is no edge between them and no edge between them and a common node. This probability that two nodes $i$ and $j$ aren't in a triangle $p_"no triangle"(i, j)$ is
       $
-        p_("no triangle")(i, j) = underbrace(1 - p, "no direct edge") + underbrace(1 - (1 - p^2)^(n - 2), "no common neighbor").
+        p_("no triangle")(i, j) = underbrace(1 - p, "no direct edge") * underbrace((1 - p^2)^(n - 2), "no common neighbor").
       $ 
-      The $(1-p^2)^(n-2)$ term comes from the fact that for a third node $k$, the probability that it doesn't have an edge with both $i$ and $j$ is $1 - p^2$. The probability that every single 
+      The $(1-p^2)^(n-2)$ term comes from the fact that for a third node $k$, the probability that it doesn't have an edge with both $i$ and $j$ is $1 - p^2$. 
+
+      The probability that at least one of the pairs of nodes isn't part of a triangle is less than or equal to the sum of the probabilities of no triangle for each of the pairs of nodes (union bound). That is,
+      $
+        P("diameter"(G(n, p)) > 2) <= binom(n, 2) (1-p)(1-p^2)^(n-2) approx (n^2)/2 (1-p)(1-p^2)^(n-2)
+      $ 
+
+      Since exponential decay grows faster than quadratic increase,
+      $
+        lim_(n->infinity) binom(n, 2) (1-p)(1-p^2)^(n-2) approx (n^2)/2 (1-p)(1-p^2)^(n-2) -> 0.
+      $ 
+
+      Thus, 
+      $
+        lim_(n->infinity) P("diameter"(G(n,p)) > 2) -> 0.
+      $ 
+
+      Now, we just have to show that the probabilty of all nodes being one away from each other (max diameter of 1) is 0 as $n -> infinity$. The probability that every node is connected to every other is just $p^(binom(n, 2))$ which obviously goes to 0 as $n -> infinity$. Thus,
+      $
+        lim_(n -> infinity) P("diameter"(G(n,p)) = 2) -> 1.
+      $ 
     ]
   ]
 ]
