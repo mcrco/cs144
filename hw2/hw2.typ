@@ -33,7 +33,7 @@
     Plot the histogram and ccdf of node degrees in coauthorship network. Calculate the average clustering coefficient, overall clustering coefficient, maximal diameter, and average diameter.
 
     #ans[
-      Code is #link("", [here]).
+      Code is #link("https://github.com/mcrco/cs144/blob/main/hw2/p1.ipynb", [here]).
 
       #figure(
         image("img/1a-hist.png", width: 80%), 
@@ -56,7 +56,7 @@
     Calculate the number of triangles. Assuming $T = EE[T]$, the expected number of triangles in an Erdos-Renyi graph with the same number of nodes, calculate the $p$ in $G(n, p)$ for that E-R graph.
 
     #ans[
-      Code is #link("", [here]).
+      Code is #link("https://github.com/mcrco/cs144/blob/main/hw2/p1.ipynb", [here]).
 
       - Number of triangles: 47779
       - $p = 0.0159$
@@ -77,7 +77,7 @@
 
   + #pt[
     #ans[
-      Code is #link("", [here]).
+      Code is #link("https://github.com/mcrco/cs144/blob/main/hw2/p2.ipynb", [here]).
 
       #figure(
         image("img/2a.png"),
@@ -90,7 +90,7 @@
 
   + #pt[
     #ans[
-      Code is #link("", [here]).
+      Code is #link("https://github.com/mcrco/cs144/blob/main/hw2/p2.ipynb", [here]).
 
       #figure(
         image("img/2b.png", width: 80%),
@@ -103,7 +103,7 @@
 
   + #pt[
     #ans[
-      Code is #link("", [here]).
+      Code is #link("https://github.com/mcrco/cs144/blob/main/hw2/p2.ipynb", [here]).
 
       #figure(
         image("img/2c-100.png"),
@@ -125,7 +125,7 @@
   Analyze the average shortest path using a greedy algorithm for a Watts-Strogatz graph with $n=1000, k=10, p=0.1$.
 
   #ans[
-    Code is #link("", [here]).
+    Code is #link("https://github.com/mcrco/cs144/blob/main/hw2/p3.ipynb", [here]).
 
     - Average shortest path length: 4.5
     - Average greedy path length: 11.69
