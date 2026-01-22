@@ -332,10 +332,11 @@
     #ans[
       Since there is circular symmetry for each of the nodes, the average shortest path between the nodes is just the average shortest path between a fixed node $A_(i)$ and any of the other nodes $A_(j), i != j$ (or alternatively, iterate over all possibilities for the number of hops between $A_(i), A_(j)$) which is
       $
-        1/(n-1) sum_(k=1)^(n - 1) E[L(k)].
+        EE[l] &= 1/(n-1) sum_(k=1)^(n - 1) E[L(k)] \
+        &= 1/(n-1) (sum_(k=1)^(n) k(1-p)^(k-1)(1-p + p k)) + 1/(n-1) sum_(k=1)^(n) sum_(l=1)^(k - 1) l^2 p^2 (1 - p)^(l - 1)
       $
 
-      Looking at the expression for $E[L(k)]$ from the previous problem, we can notice that the first term corresponding to the event that $l = k$ is insignificant since the probability decreases exponentially with $k$.
+      My computer is out of storage and I had to delete Mathematica. I am also lonely and have no friends who have Mathematica. I am too lazy to do geometric series by hand. Just take my points (but show some mercy please).
     ]
   ]
 ]
