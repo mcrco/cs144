@@ -31,6 +31,10 @@ Using 2 late tokens for this.
 + #qs[
   *Heavy vs. Light*
 
+  #ans[
+    #link("https://github.com/mcrco/cs144/blob/main/hw3/p1.ipynb", [link to code]).
+  ]
+
   + #pt[
     *Law of Large Numbers*
 
@@ -106,6 +110,10 @@ Using 2 late tokens for this.
 
 + #qs[
   *The Devil is in the Details*
+
+  #ans[
+    #link("https://github.com/mcrco/cs144/blob/main/hw3/p2.ipynb", [link to code]).
+  ]
 
   + #pt[
     *Preferential attachment model*
