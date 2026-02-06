@@ -22,6 +22,8 @@ you to try out other techniques to rank search results (e.g. your own
 ML-based approach, etc.).
 """
 
+import numpy as np
+
 
 def compute_pagerank(graph, damping=0.85, max_iter=10000, tol=1e-8):
     """
@@ -45,13 +47,40 @@ def compute_pagerank(graph, damping=0.85, max_iter=10000, tol=1e-8):
         all_nodes.update(links)
     all_nodes = list(all_nodes)
     n = len(all_nodes)
-    
+    node_to_idx = {url: i for i, url in enumerate(all_nodes)}
+
     if n == 0:
         return {}
 
-    pr = {node: 1.0 / n for node in all_nodes}
-    
-    return pr
+    # transition matrix
+    P = np.zeros((n, n))
+    for node in all_nodes:
+        links = []
+        if node in graph:
+            links = graph[node]
+        j = node_to_idx[node]
+        # self-loop if no outbound edges (dangling node)
+        if len(links) == 0:
+            P[j, j] = 1.0
+            continue
+        # distribute score equally to outbound edges: from j we go to each link
+        for link in links:
+            i = node_to_idx[link]
+            P[i, j] = 1.0 / len(links)
+
+    # add damping + uniform distribution
+    G = damping * P + (1 - damping) / n * np.ones((n, n))
+
+    # power iteration
+    pr = np.ones(n) / n
+    for _ in range(max_iter):
+        pr_old = pr
+        pr = G @ pr
+        if np.max(np.abs(pr - pr_old)) < tol:
+            break
+
+    ret = {node: pr[i] for i, node in enumerate(all_nodes)}
+    return ret
 
 
 if __name__ == "__main__":
