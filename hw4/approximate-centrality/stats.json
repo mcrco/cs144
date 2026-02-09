@@ -1,0 +1,293 @@
+[
+    {
+        "embed_size": 16,
+        "num_layers": 5,
+        "num_folds": 5,
+        "num_epochs": 10,
+        "train_val_losses": [
+            0.18463745713233948,
+            0.09373090416193008,
+            0.06570566445589066,
+            0.07200819998979568,
+            0.29887309670448303
+        ],
+        "kendall_tau_train": 0.6485754046895883,
+        "p_value_train": 0.0,
+        "kendall_tau_test": -0.5224403370275612,
+        "p_value_test": 0.0
+    },
+    {
+        "embed_size": 64,
+        "num_layers": 5,
+        "num_folds": 5,
+        "num_epochs": 10,
+        "train_val_losses": [
+            0.2250027358531952,
+            0.06491244584321976,
+            0.06903919577598572,
+            0.07346158474683762,
+            0.29131484031677246
+        ],
+        "kendall_tau_train": 0.6685841921938367,
+        "p_value_train": 0.0,
+        "kendall_tau_test": -0.34312193552747444,
+        "p_value_test": 0.0
+    },
+    {
+        "embed_size": 256,
+        "num_layers": 5,
+        "num_folds": 5,
+        "num_epochs": 10,
+        "train_val_losses": [
+            0.2122289538383484,
+            0.07189851254224777,
+            0.06434358656406403,
+            0.0694279819726944,
+            0.275228351354599
+        ],
+        "kendall_tau_train": 0.6686860321332744,
+        "p_value_train": 0.0,
+        "kendall_tau_test": -0.5087409586857914,
+        "p_value_test": 0.0
+    },
+    {
+        "embed_size": 1024,
+        "num_layers": 5,
+        "num_folds": 5,
+        "num_epochs": 10,
+        "train_val_losses": [
+            0.1966893970966339,
+            0.06742782890796661,
+            0.06750994175672531,
+            0.07079655677080154,
+            0.2770765721797943
+        ],
+        "kendall_tau_train": 0.6683958959698452,
+        "p_value_train": 0.0,
+        "kendall_tau_test": -0.5377326108014275,
+        "p_value_test": 0.0
+    },
+    {
+        "embed_size": 2048,
+        "num_layers": 5,
+        "num_folds": 5,
+        "num_epochs": 10,
+        "train_val_losses": [
+            0.20990188419818878,
+            0.06768395006656647,
+            0.06835490465164185,
+            0.0711369439959526,
+            0.27664902806282043
+        ],
+        "kendall_tau_train": 0.6718534138409227,
+        "p_value_train": 0.0,
+        "kendall_tau_test": -0.5589474357476935,
+        "p_value_test": 0.0
+    },
+    {
+        "embed_size": 256,
+        "num_layers": 1,
+        "num_folds": 5,
+        "num_epochs": 10,
+        "train_val_losses": [
+            0.2629353404045105,
+            0.1298326700925827,
+            0.09301643818616867,
+            0.07663294672966003,
+            0.30825376510620117
+        ],
+        "kendall_tau_train": 0.6434442828900577,
+        "p_value_train": 0.0,
+        "kendall_tau_test": 0.04179760244336626,
+        "p_value_test": 6.258308487988061e-11
+    },
+    {
+        "embed_size": 256,
+        "num_layers": 2,
+        "num_folds": 5,
+        "num_epochs": 10,
+        "train_val_losses": [
+            0.24645863473415375,
+            0.11621931940317154,
+            0.07007896900177002,
+            0.07047085464000702,
+            0.286836713552475
+        ],
+        "kendall_tau_train": 0.6497719598494562,
+        "p_value_train": 0.0,
+        "kendall_tau_test": -0.5372846227815599,
+        "p_value_test": 0.0
+    },
+    {
+        "embed_size": 256,
+        "num_layers": 4,
+        "num_folds": 5,
+        "num_epochs": 10,
+        "train_val_losses": [
+            0.21633921563625336,
+            0.07467363774776459,
+            0.06448335945606232,
+            0.07190849632024765,
+            0.2699766755104065
+        ],
+        "kendall_tau_train": 0.6615406136476353,
+        "p_value_train": 0.0,
+        "kendall_tau_test": -0.5194078271571234,
+        "p_value_test": 0.0
+    },
+    {
+        "embed_size": 256,
+        "num_layers": 8,
+        "num_folds": 5,
+        "num_epochs": 10,
+        "train_val_losses": [
+            0.1799289733171463,
+            0.05335855111479759,
+            0.07033602148294449,
+            0.07476774603128433,
+            0.28630155324935913
+        ],
+        "kendall_tau_train": 0.6671182620828207,
+        "p_value_train": 0.0,
+        "kendall_tau_test": -0.5288145305023407,
+        "p_value_test": 0.0
+    },
+    {
+        "embed_size": 256,
+        "num_layers": 16,
+        "num_folds": 5,
+        "num_epochs": 10,
+        "train_val_losses": [
+            0.1443721055984497,
+            0.0531095415353775,
+            0.07006026059389114,
+            0.07052895426750183,
+            0.24980075657367706
+        ],
+        "kendall_tau_train": 0.6843507011334291,
+        "p_value_train": 0.0,
+        "kendall_tau_test": 0.5234805947380549,
+        "p_value_test": 0.0
+    },
+    {
+        "embed_size": 256,
+        "num_layers": 32,
+        "num_folds": 5,
+        "num_epochs": 10,
+        "train_val_losses": [
+            0.2618084251880646,
+            0.10144197940826416,
+            0.05566844716668129,
+            0.07091545313596725,
+            0.29233092069625854
+        ],
+        "kendall_tau_train": 0.44928886749710606,
+        "p_value_train": 0.0,
+        "kendall_tau_test": -0.6508057465387483,
+        "p_value_test": 0.0
+    },
+    {
+        "embed_size": 256,
+        "num_layers": 5,
+        "num_folds": 2,
+        "num_epochs": 10,
+        "train_val_losses": [
+            0.2975218892097473,
+            0.2909652292728424
+        ],
+        "kendall_tau_train": 0.6679103426722571,
+        "p_value_train": 0.0,
+        "kendall_tau_test": -0.5219192492817849,
+        "p_value_test": 0.0
+    },
+    {
+        "embed_size": 256,
+        "num_layers": 5,
+        "num_folds": 5,
+        "num_epochs": 10,
+        "train_val_losses": [
+            0.21502380073070526,
+            0.07269585877656937,
+            0.06636368483304977,
+            0.07131148129701614,
+            0.27820101380348206
+        ],
+        "kendall_tau_train": 0.669757702097115,
+        "p_value_train": 0.0,
+        "kendall_tau_test": -0.5071608226736927,
+        "p_value_test": 0.0
+    },
+    {
+        "embed_size": 256,
+        "num_layers": 5,
+        "num_folds": 10,
+        "num_epochs": 10,
+        "train_val_losses": [
+            0.250808447599411,
+            0.1452515423297882,
+            0.09327585995197296,
+            0.05640626326203346,
+            0.05338596925139427,
+            0.06609365344047546,
+            0.035363513976335526,
+            0.05930353328585625,
+            0.10039465129375458,
+            0.22668519616127014
+        ],
+        "kendall_tau_train": 0.6561992592810733,
+        "p_value_train": 0.0,
+        "kendall_tau_test": -0.5520454762319555,
+        "p_value_test": 0.0
+    },
+    {
+        "embed_size": 256,
+        "num_layers": 5,
+        "num_folds": 5,
+        "num_epochs": 5,
+        "train_val_losses": [
+            0.26020100712776184,
+            0.1021139845252037,
+            0.06008083373308182,
+            0.07371658086776733,
+            0.2827574908733368
+        ],
+        "kendall_tau_train": 0.6515407217957905,
+        "p_value_train": 0.0,
+        "kendall_tau_test": -0.4651302408361804,
+        "p_value_test": 0.0
+    },
+    {
+        "embed_size": 256,
+        "num_layers": 5,
+        "num_folds": 5,
+        "num_epochs": 10,
+        "train_val_losses": [
+            0.20930074155330658,
+            0.06967110931873322,
+            0.0661613717675209,
+            0.07220280170440674,
+            0.2788710594177246
+        ],
+        "kendall_tau_train": 0.6724947500142213,
+        "p_value_train": 0.0,
+        "kendall_tau_test": -0.50766033424206,
+        "p_value_test": 0.0
+    },
+    {
+        "embed_size": 256,
+        "num_layers": 5,
+        "num_folds": 5,
+        "num_epochs": 20,
+        "train_val_losses": [
+            0.17248006165027618,
+            0.05487682297825813,
+            0.06871528923511505,
+            0.0699603334069252,
+            0.26322031021118164
+        ],
+        "kendall_tau_train": 0.6850454086435337,
+        "p_value_train": 0.0,
+        "kendall_tau_test": -0.5266141020911483,
+        "p_value_test": 0.0
+    }
+]

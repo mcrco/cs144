@@ -50,6 +50,12 @@ def main():
     for i, (url, score) in enumerate(top_pages, 1):
         print(f"  {i:2d}. {score:.6f}  {url}")
 
+    tot_score = 0
+    for url, score in scores.items():
+        tot_score += score
+    print(f"Total score: {tot_score}")
+
+
 
 if __name__ == "__main__":
     main()
