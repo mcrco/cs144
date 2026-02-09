@@ -48,7 +48,7 @@ def main():
     top_pages = sorted(scores.items(), key=lambda x: x[1], reverse=True)[:10]
     print("\nTop 10 pages by PageRank:")
     for i, (url, score) in enumerate(top_pages, 1):
-        print(f"  {i:2d}. {score:.9f}  {url}")
+        print(f"  {i:2d}. {score:.6f}  {url}")
 
 
 if __name__ == "__main__":

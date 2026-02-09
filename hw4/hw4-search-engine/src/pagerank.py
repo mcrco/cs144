@@ -25,10 +25,10 @@ ML-based approach, etc.).
 import numpy as np
 
 
-def compute_pagerank(graph, damping=0.85, max_iter=10000, tol=1e-8):
+def compute_pagerank(graph, damping=0.85, max_iter=10000, tol=1e-7):
     """
     Compute PageRank scores for all nodes in the graph.
-    
+
     Args:
         graph: Dictionary mapping URLs to lists of outbound links.
                Format: {url: [list of linked URLs]}
@@ -36,12 +36,16 @@ def compute_pagerank(graph, damping=0.85, max_iter=10000, tol=1e-8):
                  a link vs. jumping to a random page.
         max_iter: Maximum number of iterations (default 1000)
         tol: Convergence tolerance (default 1e-7)
-    
+
     Returns:
         Dictionary mapping URLs to their PageRank scores.
         Format: {url: pagerank_score}
     """
-    
+
+    # deduplicate outbound edges
+    for node in graph:
+        graph[node] = list(set(graph[node]))
+
     all_nodes = set(graph.keys())
     for links in graph.values():
         all_nodes.update(links)
@@ -59,9 +63,9 @@ def compute_pagerank(graph, damping=0.85, max_iter=10000, tol=1e-8):
         if node in graph:
             links = graph[node]
         j = node_to_idx[node]
-        # self-loop if no outbound edges (dangling node)
+        # link to all nodes if no outbound edges
         if len(links) == 0:
-            P[j, j] = 1.0
+            P[:, j] = 1.0 / n
             continue
         # distribute score equally to outbound edges: from j we go to each link
         for link in links:
@@ -85,28 +89,14 @@ def compute_pagerank(graph, damping=0.85, max_iter=10000, tol=1e-8):
 
 if __name__ == "__main__":
     # Simple test case
-    network1 = {
-        'A': ['B', 'C'],
-        'B': ['C'],
-        'C': ['A'],
-        'D': ['C']
-    }
+    network1 = {"A": ["B", "C"], "B": ["C"], "C": ["A"], "D": ["C"]}
 
     # Slightly less trivial test case
-    network2 = {
-        'A': ['B', 'C', 'D'],
-        'B': ['E'],
-        'C': ['E'],
-        'D': ['E'],
-        'E': []
-    }
+    network2 = {"A": ["B", "C", "D"], "B": ["E"], "C": ["E"], "D": ["E"], "E": []}
 
     # Add more networks here if desired
 
-    test_cases = [
-        ("Network 1", network1),
-        ("Network 2", network2)
-    ]
+    test_cases = [("Network 1", network1), ("Network 2", network2)]
 
     print("\n" + "=" * 48)
     print("   Running PageRank on Simple Networks   ")
@@ -125,4 +115,3 @@ if __name__ == "__main__":
             print()
         else:
             print("PageRank not yet implemented!\n")
-

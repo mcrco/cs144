@@ -37,6 +37,30 @@
 
   - The provided notebook includes a fully functional model training pipeline: preprocessing graph data, embedding the graph information and training the model. We don't require you to modify any given function for this problem. After the training, the pipeline computes a Kendall-tau similarity score between the predicted centrality scores and their ground-truth (the exact betweenness function). We expect you to get a Kendall-tau score at least 0.7. In order to achieve this objective, you need to choose four pre-defined parameters wisely. We hope you can get familiar with this training pipeline by playing around the parameters. Turn in a description of your evaluations, including the best parameters you found and any connection you see to graph structure. (This description can be a brief paragraph on what you noticed with varying some subset of the following: embedding size, \# of layers, \# of folds for cross-validation, \# of epochs, etc.)
   - Evaluate your trained model on a larger graph. In this exercise, you will need to write your own code to evaluate your trained model on p2p-Gnutella04 dataset. We provide some hints in the Colab notebook. Report the Kendall-tau score you get for the evaluation.
+
+  #ans[
+    First off, I don't think the number of folds in k-fold cross validation should have any effect on the actual Kendall-tau of the model on the training data. The number of folds should just be there to give you an estimate of how well a model generalizes, not impact performance. However, in the given code, we are evaluating the model trained on everything but the last holdout fold, so I changed it to train on all the data after it did the cross-validation.
+
+    After running some experiments with different hyperparameters, I came to the following conclusions:
+    - 5 epochs is enough for convergence.
+    - increasing embedding size to 256 and number of layers to 5 helps the most with reaching the 0.7 Kendall-tau mark.
+    - the optimal number of layers is around 16
+      - increasing the number of layers to 16 with an embedding size of 256 achieved 0.52 Kendall-tau on test set with 0.68 Kendall-tau on train set (up to 0.7 with good random seeding)
+      - also had the lowest validation MSE for 5-fold CV
+    - deeper neural networks require gradient clipping or else the weights will explode.
+    - graph seems somewhat "symmetric" up to 10 folds since validation MSE decreases compared to 5 folds. didn't feel like testing more than 10 folds since rerunning experiments takes a while and I'm kinda close to submission deadline.
+
+    One configuration that achieved 0.7 Kendall-tau was 256 embedding size, 5 layers, 20 epochs (see notebook). For some reason (maybe due to seeding?) the same config didn't reach 0.7 Kendall-tau in my training script, but it seemed pretty close (0.67).
+
+    I've only attached the relevant graphs for my conclusions, but all graphs of validation loss/Kendall-tau vs each hyperparameter can be found in the notebook.
+
+    #figure(
+      grid(
+        image("img/"),
+        image("img/kt_epochs.png"),
+      )
+    )
+  ]
 ]
 
 + #qs[
@@ -55,6 +79,10 @@
     - Converge to a reasonable tolerance (e.g., when the maximum change in any PageRank score is less than $10^(-7)$)
 
     The function signature and detailed specifications are provided in the starter code. Once implemented, run `compute_pagerank.py` to compute scores for your crawled web graph.
+
+    #ans[
+      Code is here: .
+    ]
   ]
 
   + #pt[
@@ -62,6 +90,35 @@
     - A brief description of your crawling results (number of pages indexed, any interesting observations)
     - The top 10 pages by PageRank from your crawl
     - Your 5 search queries and a discussion of the quality of results for each query. Do the results make sense? How does PageRank affect the ranking compared to pure text relevance?
+
+    #ans[
+      I crawled the default 5000 pages. The order showed that pages with the same subdomain (e.g. a lab, catalog, etc...) would be crawled consecutively. This makes me feel like the crawled results could be heavily skewed to just a few labs or just a few subdomains, which probably isn't ideal if we want a little bit of everything.
+
+      The top 10 pages were
+      ```
+      Top 10 pages by PageRank:
+        1. 0.028467  https://www.caltech.edu
+        2. 0.019154  https://www.caltech.edu/privacy-notice
+        3. 0.017281  https://digitalaccessibility.caltech.edu
+        4. 0.004371  https://thesis.library.caltech.edu
+        5. 0.003022  https://directory.caltech.edu
+        6. 0.002795  https://magazine.caltech.edu
+        7. 0.002708  https://sites.caltech.edu
+        8. 0.002657  https://digitalaccessibility.caltech.edu/accessibility-guidelines-for-content-creators
+        9. 0.002656  https://hr.caltech.edu/resources/notices-administrative-guidelines/digital-accessibility
+        10. 0.002475  https://www.caltech.edu/claimed-copyright-infringement
+      ```
+
+      My first query was "courses 2025". The results were pretty good, but I did notice that the word relevance scores for the top 10 pages were all really similar. What decided the ranking was the PageRank scores. The main catalog page had a higher PageRank score than the 2025-2026, which ranked higher than the 2024-2025 page. Ideally, I feel like the 2025-2026 page ranks first, followed by the 2024-2025 page, followed by the main catalog, but I guess the main catalog hogs the "click traffic". Starting from the 6th result and onwards, it was a bunch of random stuff from the Keck Institute, probably because we didn't crawl enough pages, and like I said in results for the crawl, a few subdomains can easily hog all of the index.
+
+      My second query was "honor code". The real Honor Code and Community Standards page was the second result, behind Quick Links for Students. Like before, the PageRank score seems to have done more harm than good by reducing the semantic signal and instead prioritizing pages with higher traffic.
+
+      My third query was computer vision, which failed massively because there weren't enough pages indexed. Also, the keyword matching matched "vision" with "division" in a few of the top ranking results.
+
+      My fourth query was "financial aid". This seems like a pretty crucial query, and once again PageRank pushed down the relevant pages to 2nd, 5th, and 6th, with "high traffic" pages like "Caltech at a Glance" and "Information for Graduate Students" taking the top results.
+
+      My fifth query was "cs 144". Everything ended up being a course catalog page ranked in order of the PageRank score. Nothing special.
+    ]
   ]
 ]
 
