@@ -39,7 +39,12 @@
   - Evaluate your trained model on a larger graph. In this exercise, you will need to write your own code to evaluate your trained model on p2p-Gnutella04 dataset. We provide some hints in the Colab notebook. Report the Kendall-tau score you get for the evaluation.
 
   #ans[
-    First off, I don't think the number of folds in k-fold cross validation should have any effect on the actual Kendall-tau of the model on the training data. The number of folds should just be there to give you an estimate of how well a model generalizes, not impact performance. However, in the given code, we are evaluating the model trained on everything but the last holdout fold, so I changed it to train on all the data after it did the cross-validation.
+    Code is here:
+    - #link("https://github.com/mcrco/cs144/blob/main/hw4/approximate-centrality/approximate_centrality.ipynb", [notebook code])
+    - #link("https://github.com/mcrco/cs144/blob/main/hw4/approximate-centrality/approximate_centrality.py", [training code for hparam comparisons])
+    - #link("https://github.com/mcrco/cs144/blob/main/hw4/approximate-centrality/stats.ipynb", [visualization of hparam comparison])
+
+    First off, I don't think the number of folds in k-fold cross validation should have any effect on the actual Kendall-tau of the model on the training data. The number of folds should just be there to give you an estimate of how well a model generalizes, not impact performance. However, in the given code, we are evaluating the model trained on everything but the last holdout fold, so I changed it to train on all the data after it did the cross-validation. I also changed the model to train fully on all data after compute k-fold cross-validation scores.
 
     After running some experiments with different hyperparameters, I came to the following conclusions:
     - 5 epochs is enough for convergence (@epochs).
@@ -97,7 +102,7 @@
     The function signature and detailed specifications are provided in the starter code. Once implemented, run `compute_pagerank.py` to compute scores for your crawled web graph.
 
     #ans[
-      Code is here: .
+      #link("https://github.com/mcrco/cs144/blob/main/hw4/hw4-search-engine/src/pagerank.py", [link to code]).
     ]
   ]
 
