@@ -42,13 +42,13 @@
     First off, I don't think the number of folds in k-fold cross validation should have any effect on the actual Kendall-tau of the model on the training data. The number of folds should just be there to give you an estimate of how well a model generalizes, not impact performance. However, in the given code, we are evaluating the model trained on everything but the last holdout fold, so I changed it to train on all the data after it did the cross-validation.
 
     After running some experiments with different hyperparameters, I came to the following conclusions:
-    - 5 epochs is enough for convergence.
-    - increasing embedding size to 256 and number of layers to 5 helps the most with reaching the 0.7 Kendall-tau mark.
-    - the optimal number of layers is around 16
+    - 5 epochs is enough for convergence (@epochs).
+    - increasing embedding size to 256 and number of layers to 5 helps the most with reaching the 0.7 Kendall-tau mark (see notebook for top 10 hyperparameter config ranking)
+    - the optimal number of layers is around 16 (@layers).
       - increasing the number of layers to 16 with an embedding size of 256 achieved 0.52 Kendall-tau on test set with 0.68 Kendall-tau on train set (up to 0.7 with good random seeding)
       - also had the lowest validation MSE for 5-fold CV
     - deeper neural networks require gradient clipping or else the weights will explode.
-    - graph seems somewhat "symmetric" up to 10 folds since validation MSE decreases compared to 5 folds. didn't feel like testing more than 10 folds since rerunning experiments takes a while and I'm kinda close to submission deadline.
+    - graph seems somewhat "symmetric" up to 10 folds since validation MSE decreases compared to 5 folds. didn't feel like testing more than 10 folds since rerunning experiments takes a while and I'm kinda close to submission deadline (@folds).
 
     One configuration that achieved 0.7 Kendall-tau was 256 embedding size, 5 layers, 20 epochs (see notebook). For some reason (maybe due to seeding?) the same config didn't reach 0.7 Kendall-tau in my training script, but it seemed pretty close (0.67).
 
@@ -56,10 +56,26 @@
 
     #figure(
       grid(
-        image("img/"),
-        image("img/kt_epochs.png"),
-      )
-    )
+        columns: 2,
+        image("img/mse_epochs.png"),
+        image("img/kt_epochs.png")
+      ),
+      caption: [Metrics vs Epochs]
+    ) <epochs>
+
+    #figure(
+      grid(
+        columns: 2,
+        image("img/mse_layers.png"),
+        image("img/kt_layers.png"),
+      ),
+      caption: [Metrics vs Number of layers]
+    ) <layers>
+
+    #figure(
+      image("img/mse_folds.png"),
+      caption: [CV MSE vs Folds]
+    ) <folds>
   ]
 ]
 
