@@ -38,6 +38,7 @@
 
   Your task:
 
+  #link("https://github.com/mcrco/cs144/blob/main/hw5/p1.ipynb", [link to code])
   + #pt[
     *[20 points]* Generate a SSBM network with $n = 30$, $k = 3$, $A = 0.7$ and $B = 0.1$. Run the spectral clustering and k-means clustering algorithms over the network, for appropriate value(s) of $k$, and visualize the clusters obtained from each algorithm. You may find Python libraries such as `sklearn.cluster.KMeans` and `sklearn.cluster.SpectralClustering` useful for this question.
 
@@ -124,6 +125,8 @@
 
   Your task: Simulate 4000 drivers traveling from $S$ to $E$.
 
+  #link("https://github.com/mcrco/cs144/blob/main/hw5/p2.ipynb", [link to code])
+
   + #pt[
     *[10 points]* Initialize all drivers on the top $(S -> A -> E)$ path. Iteratively move 1% of the drivers currently on the slowest path to the fastest path; do this 1,000 times. Assume drivers act greedily, are rational, and make their decisions in each iteration simultaneously. Generate a plot showing average travel time for each path and overall v. iteration number. Report the final number of drivers on each path and the average travel time. Does this appear to be an equilibrium?
 
@@ -150,7 +153,7 @@
     *[10 points]* Explain intuitively why rational drivers flocked to the new path despite it worsening the global outcome. Why don't they switch back?
 
     #ans[
-      The drivers go to the new path because they consider their own time selfishly. Their reduction of their own time compounds into an addition of more time for many other drivers, which is why it worsens the global outcome. They don't switch back because once again, once again, switching doesn't help them.
+      The drivers go to the new path because they consider their own time selfishly. Their reduction of their own time compounds into an addition of more time for many other drivers because the shared edges proportional to the flow get more traffic, and it worsens the global outcome. They don't switch back because once again, once again, switching doesn't help them individually.
     ]
   ]
 ]
